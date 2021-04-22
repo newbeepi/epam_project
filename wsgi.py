@@ -1,15 +1,14 @@
-from flask import Flask
-from flask_restful import Api
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
+from department_app import app, api
 
-from config import Config
+from department_app.rest.employee import EmployeeApi
+from department_app.rest.department import DepartmentApi
 
-app = Flask(__name__)
-app.config.from_object(Config)
-api = Api(app)
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
+from department_app.models.employee import Employee
+from department_app.models.department import Department
+
+
+api.add_resource(EmployeeApi, '/employee', '/employee/<id>', strict_slashes=False)
+api.add_resource(DepartmentApi, '/department', '/department/<id>', strict_slashes=False)
 
 
 if __name__ == '__main__':
