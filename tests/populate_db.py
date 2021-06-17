@@ -7,17 +7,21 @@ from datetime import date
 
 
 def populate_db():
+    db.session.query(Employee).delete()
+    db.session.query(Department).delete()
     department1 = Department(name="Research and development")
     department2 = Department(name="Marketing")
 
     employee1 = Employee(
         name="Aida",
+        surname="Battle",
         date_of_birth=date(1985, 10, 15),
         salary=1500
     )
 
     employee2 = Employee(
         name="Arthur",
+        surname="Haley",
         date_of_birth=date(1989, 4, 5),
         salary=1100
     )
@@ -30,4 +34,6 @@ def populate_db():
 
 
 if __name__ == '__main__':
+    print("Populating db...")
     populate_db()
+    print("Success")

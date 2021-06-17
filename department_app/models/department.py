@@ -13,6 +13,7 @@ class Department(db.Model):
         return {
             "id": self.id,
             "department name": self.name,
+            "employees": [employee.name for employee in self.employees]
         }
 
     def __repr__(self):

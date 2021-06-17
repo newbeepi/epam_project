@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ data.title }}</title>
+</head>
+<body>
+    <ul>
+        {%  for department in data.departments %}
+        <li><a href="{{ url_for("department", department_id=department.id) }}">{{  department.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
